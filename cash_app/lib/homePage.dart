@@ -7,7 +7,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(title: Text("This is a CASH App")),
       body: Stack(
         children: <Widget>[
-          Image.asset('assets/images/cash.jpg'),
+          ListView(
+            children: <Widget>[
+              Image.asset('assets/images/cash.jpg'),
+              Image.asset('assets/images/cash.jpg'),
+              Image.asset('assets/images/cash.jpg'),
+            ],
+          ),
           Text("\$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴\$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴ \$ € £ ¥ лв CHF Kč kr kn ₾ ft kr zł ₽ lei kr ₺ ₴", textScaleFactor: 2, style: TextStyle(color: Color(0x99000000))),
           Center(
             child: Text("This is a CASH App", textScaleFactor: 5,),
