@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 300),
             child: FlatButton(
               color: Color(0x20ffffff),
-              onPressed: _launchURL(), 
+              onPressed: _launchURL,
               child: Text('tap anywear to by merhc', textScaleFactor: 4,),
             ),
           ),
@@ -60,6 +60,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 _launchURL() async {
   const url = 'https://teespring.com/stores/cash-app';
   if (await canLaunch(url)) {
