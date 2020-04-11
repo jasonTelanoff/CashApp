@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 300),
             child: FlatButton(
               color: Color(0x20ffffff),
-              onPressed: () {}, 
+              onPressed: _launchURL(), 
               child: Text('tap anywear to by merhc', textScaleFactor: 4,),
             ),
           ),
@@ -57,5 +58,13 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+_launchURL() async {
+  const url = 'https://flutter.dev';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
