@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
   }
 }
 _launchURL() async {
-  const url = 'https://flutter.dev';
+  const url = 'https://teespring.com/stores/cash-app';
   if (await canLaunch(url)) {
     await launch(url);
   } else {
