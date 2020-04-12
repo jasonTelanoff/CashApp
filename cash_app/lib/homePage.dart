@@ -35,8 +35,10 @@ class _HomePageState extends State<HomePage> {
               Image.asset('assets/images/cash.jpg'),
               TextField(
                 decoration: InputDecoration(
-                  hintText: "Dollars to Pounds",
-                 border: OutlineInputBorder(borderSide: BorderSide(color: Colors.green[900],width: 10.0))),
+                    hintText: "Dollars to Pounds",
+                    border: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.black, width: 16.0))),
                 onSubmitted: (String value) async {
                   var currency = double.parse(value);
                   currency = (currency * 0.80);
@@ -48,7 +50,9 @@ class _HomePageState extends State<HomePage> {
                         content: Text(currency.toStringAsFixed(2) + "£"),
                         actions: <Widget>[
                           FlatButton(
-                            shape: RoundedRectangleBorder(side: BorderSide(color: Colors.green[900],width: 4.0) ),
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: Colors.black, width: 4.0)),
                             onPressed: () {
                               Navigator.pop(context);
                             },
@@ -63,47 +67,52 @@ class _HomePageState extends State<HomePage> {
               Image.asset('assets/images/cash.jpg'),
             ],
           ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420, right: 205),
-            child: FlatButton(
-              shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black,width: 4.0) ),
-              color: Color(0xddffffff),
-              onPressed: _launchURL,
-              child: Center(
-                  child: Text(
-                'Tap here to buy merch',
-                textScaleFactor: 2,
-              )),
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420, left: 205),
-            child: FlatButton(
-              shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black,width: 4.0)),
-              color: Color(0xddffffff),
-              onPressed: () async {
-                await player.stop();
-                player.play();
-              },
-              child: Center(
-                  child: Text(
-                'Cash Beats',
-                textScaleFactor: 2,
-              )),
-            ),
+          Row(
+            children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 2,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 4.0)),
+                  color: Color(0xddffffff),
+                  onPressed: _launchURL,
+                  child: Center(
+                      child: Text(
+                    'Tap here to buy merch',
+                    textScaleFactor: 2,
+                  )),
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width / 2,
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 4.0)),
+                  color: Color(0xddffffff),
+                  onPressed: () async {
+                    await player.stop();
+                    player.play();
+                  },
+                  child: Center(
+                      child: Text(
+                    'Cash Beats',
+                    textScaleFactor: 2,
+                  )),
+                ),
+              ),
+            ],
           ),
           Positioned(
               bottom: 0.0,
               child: Center(
                   child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: 100,
+                height: 50,
                 child: RaisedButton(
-                  shape: RoundedRectangleBorder(side: BorderSide(color: Colors.green[900],width: 4.0) ),
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 4.0)),
                   elevation: 200,
                   color: Color(0xddffffff),
                   onPressed: () {
