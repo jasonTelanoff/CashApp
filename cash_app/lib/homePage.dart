@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_audio_player/flutter_audio_player.dart';
+import 'package:just_audio/just_audio.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +9,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  AudioPlayer player;
+
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+    player.setAsset(
+        "assets/audio/cash.mp3");
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                     builder: (BuildContext context) {
                       return AlertDialog(
                         title: const Text('dinero'),
-                        content: Text(currency.toStringAsFixed(2)+"£"),
+                        content: Text(currency.toStringAsFixed(2) + "£"),
                         actions: <Widget>[
                           FlatButton(
                             onPressed: () {
@@ -49,7 +64,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420,right: 205 ),
+            padding: EdgeInsets.only(bottom: 420, right: 205),
             child: FlatButton(
               color: Color(0xddffffff),
               onPressed: _launchURL,
@@ -63,10 +78,10 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420,left: 205 ),
+            padding: EdgeInsets.only(bottom: 420, left: 205),
             child: FlatButton(
               color: Color(0xddffffff),
-              onPressed: () {SoundPlayerUtil.addSoundName("cash.mp3");},
+              onPressed: player.play,
               child: Center(
                   child: Text(
                 'Cash Beats',
@@ -103,14 +118,4 @@ _launchURL() async {
   } else {
     throw 'Could not launch $url';
   }
-}
-
-class SoundPlayerUtil {
-    static void addSoundName(String name) {
-      AudioPlayer.addSound('assets/audio/' + name);
-    }
-
-    static void removeAllSound() {
-      AudioPlayer.removeAllSound();
-    }
 }
