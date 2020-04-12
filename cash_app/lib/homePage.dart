@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_audio_player/flutter_audio_player.dart';
 
-class HomePage extends StatelessWidget {
-  
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +66,7 @@ class HomePage extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 420,left: 205 ),
             child: FlatButton(
               color: Color(0xddffffff),
-              onPressed: playLocalAsset,
+              onPressed: () {SoundPlayerUtil.addSoundName("cash.mp3");},
               child: Center(
                   child: Text(
                 'Cash Beats',
@@ -102,7 +105,12 @@ _launchURL() async {
   }
 }
 
-Future<AudioPlayer> playLocalAsset() async {
-    AudioCache cache = new AudioCache();
-    return await cache.play("assets/audio/cash.mp3");
+class SoundPlayerUtil {
+    static void addSoundName(String name) {
+      AudioPlayer.addSound('assets/audio/' + name);
+    }
+
+    static void removeAllSound() {
+      AudioPlayer.removeAllSound();
+    }
 }
