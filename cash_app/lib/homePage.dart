@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'package:just_audio/just_audio.dart';
 
-class HomePage extends StatelessWidget {
-  
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  AudioPlayer player;
+
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+    player.setAsset(
+        "assets/audio/cash.mp3");
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +44,7 @@ class HomePage extends StatelessWidget {
                     builder: (BuildContext context) {
                       return AlertDialog(
                         title: const Text('dinero'),
-                        content: Text(currency.toStringAsFixed(2)+"£"),
+                        content: Text(currency.toStringAsFixed(2) + "£"),
                         actions: <Widget>[
                           FlatButton(
                             onPressed: () {
@@ -46,7 +64,7 @@ class HomePage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420,right: 205 ),
+            padding: EdgeInsets.only(bottom: 420, right: 205),
             child: FlatButton(
               color: Color(0xddffffff),
               onPressed: _launchURL,
@@ -60,10 +78,10 @@ class HomePage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420,left: 205 ),
+            padding: EdgeInsets.only(bottom: 420, left: 205),
             child: FlatButton(
               color: Color(0xddffffff),
-              onPressed: playLocalAsset,
+              onPressed: player.play,
               child: Center(
                   child: Text(
                 'Cash Beats',
@@ -100,11 +118,4 @@ _launchURL() async {
   } else {
     throw 'Could not launch $url';
   }
-}
-
-var number = int.parse('1');
-
-Future<AudioPlayer> playLocalAsset() async {
-    AudioCache cache = new AudioCache();
-    return await cache.play("assets/audio/cash.mp3");
 }
