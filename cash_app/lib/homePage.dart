@@ -102,8 +102,6 @@ _launchURL() async {
   }
 }
 
-var number = int.parse('1');
-
 Future<AudioPlayer> playLocalAsset() async {
     AudioCache cache = new AudioCache();
     return await cache.play("assets/audio/cash.mp3");
