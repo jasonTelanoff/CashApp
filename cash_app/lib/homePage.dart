@@ -15,8 +15,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     player = AudioPlayer();
-    player.setAsset(
-        "assets/audio/cash.mp3");
+    player.setAsset("assets/audio/cash.mp3");
   }
 
   @override
@@ -81,7 +80,10 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(bottom: 420, left: 205),
             child: FlatButton(
               color: Color(0xddffffff),
-              onPressed: player.play,
+              onPressed: () async {
+                await player.stop();
+                player.play();
+              },
               child: Center(
                   child: Text(
                 'Cash Beats',
