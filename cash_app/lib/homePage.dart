@@ -27,14 +27,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text("This is a CASH App"))),
+      appBar: AppBar(title: Center(child: Text("CASH APP"))),
       body: Stack(
         children: <Widget>[
           ListView(
             children: <Widget>[
               Image.asset('assets/images/cash.jpg'),
               TextField(
-                decoration: InputDecoration(hintText: "Dollars to Pounds"),
+                decoration: InputDecoration(
+                  hintText: "Dollars to Pounds",
+                 border: OutlineInputBorder(borderSide: BorderSide(color: Colors.green[900],width: 10.0))),
                 onSubmitted: (String value) async {
                   var currency = double.parse(value);
                   currency = (currency * 0.80);
@@ -46,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                         content: Text(currency.toStringAsFixed(2) + "£"),
                         actions: <Widget>[
                           FlatButton(
+                            shape: RoundedRectangleBorder(side: BorderSide(color: Colors.green[900],width: 4.0) ),
                             onPressed: () {
                               Navigator.pop(context);
                             },
@@ -65,6 +68,7 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.only(bottom: 420, right: 205),
             child: FlatButton(
+              shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black,width: 4.0) ),
               color: Color(0xddffffff),
               onPressed: _launchURL,
               child: Center(
@@ -79,6 +83,7 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.only(bottom: 420, left: 205),
             child: FlatButton(
+              shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black,width: 4.0)),
               color: Color(0xddffffff),
               onPressed: () async {
                 await player.stop();
@@ -98,6 +103,7 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width,
                 height: 100,
                 child: RaisedButton(
+                  shape: RoundedRectangleBorder(side: BorderSide(color: Colors.green[900],width: 4.0) ),
                   elevation: 200,
                   color: Color(0xddffffff),
                   onPressed: () {
