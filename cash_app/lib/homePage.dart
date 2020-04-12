@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class HomePage extends StatelessWidget {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +46,28 @@ class HomePage extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(bottom: 420),
+            padding: EdgeInsets.only(bottom: 420,right: 205 ),
             child: FlatButton(
               color: Color(0xddffffff),
               onPressed: _launchURL,
               child: Center(
                   child: Text(
                 'Tap here to buy merch',
-                textScaleFactor: 4,
+                textScaleFactor: 2,
+              )),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.only(bottom: 420,left: 205 ),
+            child: FlatButton(
+              color: Color(0xddffffff),
+              onPressed: playLocalAsset,
+              child: Center(
+                  child: Text(
+                'Cash Beats',
+                textScaleFactor: 2,
               )),
             ),
           ),
@@ -85,3 +103,8 @@ _launchURL() async {
 }
 
 var number = int.parse('1');
+
+Future<AudioPlayer> playLocalAsset() async {
+    AudioCache cache = new AudioCache();
+    return await cache.play("assets/audio/cash.mp3");
+}
